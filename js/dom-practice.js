@@ -86,10 +86,11 @@ function init() {
 
     //STEP 10
 
+    let selection = document.querySelector("select");
+    let button10 = document.getElementById("button10");
 
-
-
-
-
+    button10.addEventListener("click", () => {
+        window.alert(selection.value);
+    });
 
 };
