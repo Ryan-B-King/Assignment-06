@@ -139,10 +139,10 @@ function init() {
         let addBtn = document.getElementById("addBtn");
         let delBtn = document.getElementsByName("delete");
         display(employee_list);
+        totalEmp();
         addBtn.addEventListener("click", addRow);
         delBtn.addEventListener("click", delRow);
         totalEmp();
-});
     };
     main();
 };
