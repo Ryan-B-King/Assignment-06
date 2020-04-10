@@ -41,3 +41,14 @@ tr {
 td {
     padding-left: 25px;
 }
+
+#errName, #errTitle, #errExt {
+    display: inline;
+    margin:0;
+    color: red;
+    font-weight: bold;
+}
+
+#totalEmp {
+    font-size: 1.2em;
+}

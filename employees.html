@@ -12,20 +12,29 @@
             <h2>Add Employee</h2>
             <form>
                 <label for="name">Name:</label>
-                <input type="text" id="empName" name="empName" placeholder="Ryan King">
-                <br><br>
+                <div>
+                    <input type="text" id="empName" name="empName">
+                    <p id=errName></p>
+                </div>
+                <br>
 
-                <label for="title">Title:</label>
-                <input type="text" id="empTitle" name="empTitle" placeholder="Manager">
-                <br><br>
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text"  id="empTitle" name="empTitle">
+                    <p id=errTitle></p>
+                </div>
+                <br>
 
-                <label for="extension">Extension:</label>
-                <input type="text" id="extension" name="extension" placeholder="1234">
-                <br><br>
+                <div>
+                    <label for="extension">Extension:</label>
+                    <input type="text" id="extension" name="extension">
+                    <p id=errExt></p>
+                </div>
+                <br>
 
                 <button id="addBtn">Add</button>
 
-                <p id="totalEmp">Showing X Employees</p>
+                <p id="totalEmp"></p>
                 <table id="empTable">
                     <tr>
                         <th>Name</th>
@@ -36,6 +45,5 @@
                 </table>
             </form>
     </main>
-    <!-- <script src="js/test.js"></script> -->
 </body>
 </html>
