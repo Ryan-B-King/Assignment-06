@@ -1,92 +1,71 @@
-/*eslint-env browser*/
-window.document.addEventListener("DOMContentLoaded", init);
-function init() {
-    "use strict";
-    function getEmployees() {
-        "use strict";
-        let employee_list = [];
-        employee_list[0] = ["Chris Martin", "Web Developer", 1739];
-        employee_list[1] = ["Krystal King", "Receptionist", 1234];
-        employee_list[2] = ["Wes Lee", "Data Scientist", 7845];
-        employee_list[3] = ["Spencer Stevens", "CEO", 8521];
-        employee_list[4] = ["Jackie Smith", "Janitor", 3223];
+// /*eslint-env browser*/
+// window.document.addEventListener("DOMContentLoaded", init);
+// function init() {
+//     "use strict";
+    // function getEmployees() {
+    //     "use strict";
+    //     let employee_list = [];
+    //     employee_list[0] = ["Chris Martin", "Web Developer", 1739];
+    //     employee_list[1] = ["Krystal King", "Receptionist", 1234];
+    //     employee_list[2] = ["Wes Lee", "Data Scientist", 7845];
+    //     employee_list[3] = ["Spencer Stevens", "CEO", 8521];
+    //     employee_list[4] = ["Jackie Smith", "Janitor", 3223];
     
-        return employee_list;
-    };
+    //     return employee_list;
+    // };
 
-    function display(employee_list) {
-        "use strict";
-        let i = 1;
+    // function display(employee_list) {
+    //     "use strict";
+    //     let i = 1;
 
-        employee_list.forEach(function (employee) {
-            window.console.log(String(i) + ". " + employee);
-            i += 1;
-        });
-        window.console.log("");
-    };
+    //     employee_list.forEach(function (employee) {
+    //         window.console.log(String(i) + ". " + employee);
+    //         i += 1;
+    //     });
+    //     window.console.log("");
+    // };
 
-    function del(employee_list) {
-        "use strict";
-        let num;
-        let employee;
-        num = parseInt(window.prompt("Employee number to delete"), 10);
-        if (num < 1 || num > employee_list.length) {
-            window.alert("Invalid employee number.");
-        } else {
-            employee = employee_list.splice(num - 1, 1);
-            window.console.log(employee + ' was deleted.');
-            /* OR
-            delete employee_list[num - 1];
-            window.console.log("Employee number " + num + " was deleted.");
-            */
-        }
-    };
-
-    function main() {
-        "use strict";
-        let employee_list;
+    // function main() {
+        // "use strict";
+        // let employee_list;
+        let row = 1;
         let addBtn = document.getElementById("addBtn");
 
-        employee_list = getEmployees();
+        // employee_list = getEmployees();
 
-        addBtn.addEventListener("click", () => {
+        addBtn.addEventListener("click", addRow);
+
+        function addRow() {
+            "use strict";
+
+            let name = document.getElementById("empName").value;
+            let title = document.getElementById("empTitle").value;
+            let extension = document.getElementById("extension").value;
+
+            // if (!name || !title || !extension) {
+            //     window.alert("Please fill all the boxes");
+            //     return;
+            // };
+
             let empTable = document.getElementById("empTable");
-            let rowCount = empTable.rows.length;
-            let tr = empTable.insertRow(rowCount);
+            let newRow = empTable.insertRow(1);
+            let cell1 = newRow.insertCell(0);
+            let cell2 = newRow.insertCell(1);
+            let cell3 = newRow.insertCell(2);
+            let cell4 = newRow.insertCell(3);
 
-            for (let c = 0; c < employee_list.length; c++) {
-                let td = document.createElement('td');
-                td = tr.insertCell(c);
-            }
+            cell1.innerHTML = name;
+            cell2.innerHTML = title;
+            cell3.innerHTML = extension;
+            cell4.innerHTML = "Delete";
 
-            if (c == 0) {           // FIRST COLUMN.
-                // ADD A BUTTON.
-                let button = document.createElement('input');
+            row++;
+        };
 
-                // SET INPUT ATTRIBUTE.
-                button.setAttribute('type', 'button');
-                button.setAttribute('value', 'Delete');
-
-                // ADD THE BUTTON's 'onclick' EVENT.
-                button.setAttribute('onclick', 'removeRow(this)');
-
-                td.appendChild(button);
-            }
-            else {
-                // CREATE AND ADD TEXTBOX IN EACH CELL.
-                let ele = document.createElement('input');
-                ele.setAttribute('type', 'text');
-                ele.setAttribute('value', '');
-
-                td.appendChild(ele);
-            }
-
-        });
-
-        display(employee_list);
+        // display(employee_list);
         
-    };
-    main();
-};
+    // };
+    // main();
+// };
 
 
