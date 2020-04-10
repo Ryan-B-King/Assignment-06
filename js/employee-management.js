@@ -2,11 +2,16 @@
 window.document.addEventListener("DOMContentLoaded", init);
 function init() {
     "use strict";
+    // GLOBAL VARLIABLES
     let row = 1;
     let employee_list;
     employee_list = getEmployees();
 
+    // STORES INITIAL EMPLOYEES LIST
     function getEmployees() {
+        "use strict";
+
+        //CREATES LIST ARRAY
         let employee_list = [];
         employee_list[0] = ["Chris Martin", "Web Developer", "1739"];
         employee_list[1] = ["Krystal King", "Receptionist", "1234"];
@@ -17,10 +22,12 @@ function init() {
         return employee_list;
     };
 
+    // DISPLAYS EMPLOYEES LIST AT LOAD
     function display(employee_list) {
-
+        "use strict";
         let i = 0;
 
+        // RUNS THROUGH EACH ARRAY TO SETUP INITIAL TABLE
         employee_list.forEach(function () {
             
             let empTable = document.getElementById("empTable");
@@ -41,7 +48,9 @@ function init() {
         window.console.log("");
     };
 
+    // THIS RESETS FORM AFTER VALID ADD
     function clearFields(){
+        "use strict";
 
         document.getElementById("empName").value = "";
         document.getElementById("empTitle").value = "";
@@ -56,8 +65,9 @@ function init() {
         document.getElementById("errExt").innerHTML = "";
     };
 
-
+    // VALIDATES AND ADDS NEW ROW TO EMPLOYEE TABLE
     function addRow(e) {
+        "use strict";
         e.preventDefault();
         let name = document.getElementById("empName").value;
         let title = document.getElementById("empTitle").value;
@@ -65,6 +75,7 @@ function init() {
 
         employee_list.push([name, title, extension]);
 
+        // VALIDATES INPUT AND WARNS USER OF ERRORS
         if (!name || !title || !extension) {
             if (name === ""){
                 document.getElementById("empName").style.border="1px solid red";
@@ -89,6 +100,7 @@ function init() {
             return;
         };
 
+        // ONCE VALIDATED - A NEW ROW IS ADDED WITH INPUT
         let empTable = document.getElementById("empTable");
         let newRow = empTable.insertRow(row);
         let cell1 = newRow.insertCell(0);
@@ -107,12 +119,15 @@ function init() {
         clearFields();
     };
 
+    // UPDATES TOTAL # OF EMPLOYEES
     function totalEmp(){
+        "use strict";
         document.getElementById("totalEmp").innerHTML = "Showing " + row + " Employees";
     };
 
-
+    // PROGRAM IS RAN HERE
     function main() {
+        "use strict";
         let addBtn = document.getElementById("addBtn");
         display(employee_list);
         addBtn.addEventListener("click", addRow);
