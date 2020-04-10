@@ -32,5 +32,12 @@ th {
 }
 
 tr {
-    background-color: cadetblue;
+    align-items: center;
+    height: 25px;
+    font-weight: bold;
+    background-color: rgb(156, 191, 211);
+}
+
+td {
+    padding-left: 25px;
 }
