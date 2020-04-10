@@ -52,3 +52,7 @@ td {
 #totalEmp {
     font-size: 1.2em;
 }
+
+td:nth-of-type(4) {
+    padding-left: 85px;
+}

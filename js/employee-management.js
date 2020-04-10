@@ -40,7 +40,11 @@ function init() {
             cell1.innerHTML = employee_list[i][0];
             cell2.innerHTML = employee_list[i][1];
             cell3.innerHTML = employee_list[i][2];
-            cell4.innerHTML = "Delete";
+
+            // DELETE BUTTON CREATED
+            let btn = document.createElement("button");
+            btn.innerHTML = "Delete";
+            cell4.appendChild(btn);
 
             i++;
             row++;
@@ -111,7 +115,10 @@ function init() {
         cell1.innerHTML = name;
         cell2.innerHTML = title;
         cell3.innerHTML = extension;
-        cell4.innerHTML = "Delete";
+        // DELETE BUTTON CREATED
+        let btn = document.createElement("button");
+        btn.innerHTML = "Delete";
+        cell4.appendChild(btn);
 
         row++;
 
@@ -125,13 +132,17 @@ function init() {
         document.getElementById("totalEmp").innerHTML = "Showing " + row + " Employees";
     };
 
+
     // PROGRAM IS RAN HERE
     function main() {
         "use strict";
         let addBtn = document.getElementById("addBtn");
+        let delBtn = document.getElementsByName("delete");
         display(employee_list);
         addBtn.addEventListener("click", addRow);
+        delBtn.addEventListener("click", delRow);
         totalEmp();
+});
     };
     main();
 };
