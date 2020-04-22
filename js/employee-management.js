@@ -10,7 +10,7 @@ function init() {
     // STORES INITIAL EMPLOYEES LIST
     function getEmployees() {
         "use strict";
-
+     
         //CREATES LIST ARRAY
         let employee_list = [];
         employee_list[0] = ["Chris Martin", "Web Developer", "1739"];
@@ -25,6 +25,7 @@ function init() {
     // DISPLAYS EMPLOYEES LIST AT LOAD
     function display(employee_list) {
         "use strict";
+
         let i = 0;
 
         // RUNS THROUGH EACH ARRAY TO SETUP INITIAL TABLE
@@ -45,11 +46,11 @@ function init() {
             let btn = document.createElement("button");
             btn.innerHTML = "Delete";
             cell4.appendChild(btn);
+            btn.classList.add("deleteBtn");
 
             i++;
             row++;
         });
-        window.console.log("");
     };
 
     // THIS RESETS FORM AFTER VALID ADD
@@ -73,6 +74,7 @@ function init() {
     function addRow(e) {
         "use strict";
         e.preventDefault();
+
         let name = document.getElementById("empName").value;
         let title = document.getElementById("empTitle").value;
         let extension = document.getElementById("extension").value;
@@ -86,6 +88,7 @@ function init() {
                 document.getElementById("errName").innerHTML = "Complete Field";
             } else {
                 document.getElementById("empName").style.border="1px solid black";
+                document.getElementById("errName").innerHTML = "";
             };
 
             if (title === ""){
@@ -93,6 +96,7 @@ function init() {
                 document.getElementById("errTitle").innerHTML = "Complete Field";
             } else {
                 document.getElementById("empTitle").style.border="1px solid black";
+                document.getElementById("errTitle").innerHTML = "";
             };
 
             if (extension === ""){
@@ -100,6 +104,7 @@ function init() {
                 document.getElementById("errExt").innerHTML = "Complete Field";
             } else {
                 document.getElementById("extension").style.border="1px solid black";
+                document.getElementById("errExt").innerHTML = "";
             };
             return;
         };
@@ -119,6 +124,7 @@ function init() {
         let btn = document.createElement("button");
         btn.innerHTML = "Delete";
         cell4.appendChild(btn);
+        btn.classList.add("deleteBtn");
 
         row++;
 
@@ -129,20 +135,34 @@ function init() {
     // UPDATES TOTAL # OF EMPLOYEES
     function totalEmp(){
         "use strict";
-        document.getElementById("totalEmp").innerHTML = "Showing " + row + " Employees";
+        document.getElementById("totalEmp").innerHTML = "Showing " + (row-1) + " Employees";
     };
 
+    // DELETES ROW
+    function delRow(e){
+        "use strict"
+        e.preventDefault();
+
+        let item = e.target;
+        
+        if(item.classList[0] === "deleteBtn"){
+         let emp = item.parentElement;
+         emp.closest('tr').remove();
+         row--;
+        };
+
+        totalEmp();
+    };
 
     // PROGRAM IS RAN HERE
     function main() {
         "use strict";
         let addBtn = document.getElementById("addBtn");
-        let delBtn = document.getElementsByName("delete");
+        let delBtn = document.getElementById("empTable");
         display(employee_list);
         totalEmp();
         addBtn.addEventListener("click", addRow);
         delBtn.addEventListener("click", delRow);
-        totalEmp();
     };
     main();
 };
